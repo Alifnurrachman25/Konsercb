@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -111,10 +112,15 @@ private fun ItemDetailsBody(
         var deleteConfirmationRequired by rememberSaveable {
             mutableStateOf(false)
         }
+
         ItemDetails(
             event = itemDetailsUiState.detailEvent.toEvent(),
+            onOrderClick = {
+                // Handle the click event for ordering tickets
+            },
             modifier = Modifier.fillMaxWidth()
         )
+
 
         OutlinedButton(
             onClick = { deleteConfirmationRequired = true },
@@ -138,7 +144,7 @@ private fun ItemDetailsBody(
 
 @Composable
 fun ItemDetails(
-    event: Event, modifier: Modifier = Modifier
+    event: Event, onOrderClick: () -> Unit, modifier: Modifier = Modifier
 ) {
     Card(
         modifier = modifier, colors = CardDefaults.cardColors(
@@ -180,9 +186,33 @@ fun ItemDetails(
                     horizontal = dimensionResource(id = R.dimen.padding_medium)
                 )
             )
+
+            // Button for ordering tickets
+            OutlinedButton(
+                onClick = onOrderClick,
+                shape = MaterialTheme.shapes.small,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(stringResource(id = R.string.order_tickets))
+            }
         }
     }
 }
+
+
+@Composable
+private fun TicketCategoryRow(
+    category: String,
+    price: String,
+    modifier: Modifier = Modifier
+) {
+    Row(modifier = modifier) {
+        Text(text = "$category: ")
+        Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.padding_small)))
+        Text(text = price, fontWeight = FontWeight.Bold)
+    }
+}
+
 
 @Composable
 private fun ItemDetailsRow(

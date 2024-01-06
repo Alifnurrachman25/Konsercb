@@ -9,7 +9,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.konsercb.AplikasiKonser
 
-object PenyediaViewModel{
+object PenyediaViewModel {
     val Factory = viewModelFactory {
         initializer {
             HomeViewModel(aplikasiSiswa().container.repositoriEvent)
@@ -18,17 +18,16 @@ object PenyediaViewModel{
             EntryEventViewModel(aplikasiSiswa().container.repositoriEvent)
         }
         initializer {
-            DetailEventViewModel(createSavedStateHandle(),aplikasiSiswa().container.repositoriEvent)
+            DetailEventViewModel(createSavedStateHandle(), aplikasiSiswa().container.repositoriEvent)
         }
         initializer {
-            EditEventViewModel(createSavedStateHandle(),aplikasiSiswa().container.repositoriEvent)
+            EditEventViewModel(createSavedStateHandle(), aplikasiSiswa().container.repositoriEvent)
         }
     }
 }
 
 /**
- * Fungsi ekstensi query untuk objek [Application] dan mengembalikan sebuah instance dari
- * [AplikasiSiswa].
+ * Extension function for creating [AplikasiKonser] instance from [CreationExtras].
  */
-fun CreationExtras.aplikasiSiswa():AplikasiKonser =
+fun CreationExtras.aplikasiSiswa(): AplikasiKonser =
     (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as AplikasiKonser)

@@ -2,6 +2,7 @@ package com.example.konsercb.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.konsercb.model.TicketCategory
 
 @Entity(tableName = "tblEvent")
 data class Event(
@@ -13,4 +14,6 @@ data class Event(
     val deskripsievent : String,
     val waktuevent : String,
     val tanggalevent :  String,
+    val category : String,
+    val harga : String
 )

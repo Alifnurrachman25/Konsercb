@@ -28,5 +28,7 @@
     <string name="attention">Perhatian</string>
     <string name="tanya">Apakah anda yakin menghapus ini ?</string>
     <string name="buatcommit">buatcommit</string>
+    <string name="btn_tambah_kategori">Tambahkan kategori tiket</string>
+    <string name="order_tickets">Pesan tiket</string>
 
 </resources>
